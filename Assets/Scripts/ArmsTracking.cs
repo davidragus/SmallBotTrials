@@ -2,27 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 // using System.Numerics;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.UIElements;
 
 public class ArmsTracking : MonoBehaviour
 {
 
-	[SerializeField] private LayerMask armsTrackingLayer;
+	[Header("References")]
 	[SerializeField] private Transform leftArm;
 	[SerializeField] private Transform rightArm;
+	[SerializeField] private Transform armRaycast;
+
+	[Header("Parameters")]
+	[SerializeField] private LayerMask armsTrackingLayer;
 	[SerializeField] private float maxArmTrackingRadius = 150f;
 
 
 	private Camera mainCamera;
+	private PlayerController playerController;
+
+
 
 	void Start()
 	{
 		mainCamera = Camera.main;
+		playerController = GetComponent<PlayerController>();
 	}
 
 	void Update()
 	{
-		AimArms();
+		if (!playerController.isGrappling)
+		{
+			AimArms();
+		}
 	}
 
 	private (bool success, Vector3 position) GetCursorPosition()
@@ -38,7 +50,6 @@ public class ArmsTracking : MonoBehaviour
 		}
 
 		var raycast = mainCamera.ScreenPointToRay(mousePos);
-		// Debug.DrawRay(raycast.origin, raycast.direction * 100f, Color.red);
 		if (Physics.Raycast(raycast, out var hitInfo, Mathf.Infinity, armsTrackingLayer))
 		{
 			return (success: true, position: hitInfo.point);
@@ -57,9 +68,11 @@ public class ArmsTracking : MonoBehaviour
 		{
 			var leftArmDirection = position - leftArm.position;
 			var rightArmDirection = position - rightArm.position;
+			var armRaycastDirection = position - armRaycast.position;
 
 			leftArm.up = leftArmDirection;
 			rightArm.up = rightArmDirection;
+			armRaycast.up = armRaycastDirection;
 		}
 	}
 }

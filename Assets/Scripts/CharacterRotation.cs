@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class CharacterRotation : MonoBehaviour
 {
+
+	[Header("Parameters")]
 	public float maxYAngle = 30f;
 
 	Rigidbody rb;
@@ -17,13 +19,23 @@ public class CharacterRotation : MonoBehaviour
 
 	void Update()
 	{
+		GetPlayerRotation();
+	}
+
+	void FixedUpdate()
+	{
+		RotatePlayer();
+	}
+
+	private void GetPlayerRotation()
+	{
 		float mx = Input.mousePosition.x;
 		float half = Screen.width * 0.5f;
 		float normX = (mx - half) / half;
 		targetYaw = Mathf.Clamp(normX, -1f, 1f) * -maxYAngle;
 	}
 
-	void FixedUpdate()
+	private void RotatePlayer()
 	{
 		Quaternion desired = Quaternion.Euler(0f, targetYaw, 0f);
 		rb.MoveRotation(desired);
