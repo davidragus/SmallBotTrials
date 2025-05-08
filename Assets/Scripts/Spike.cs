@@ -6,8 +6,8 @@ public class Spikes : Obstacle
 
 
     // override del colider cuando choque activamos un burst de particulas 
-    protected override void OnTriggerEnter(Collider other)
-    {
-        base.OnTriggerEnter(other);
-    }
+    // protected override void OnTriggerEnter(Collider other)
+    // {
+    //     base.OnTriggerEnter(other);
+    // }
 }

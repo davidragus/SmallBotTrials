@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerColision : MonoBehaviour
 {
+    [SerializeField] private bool invincible = false;
+    private bool recentlyHit = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +21,32 @@ public class PlayerColision : MonoBehaviour
 
     public void Die()
     {
+        if (recentlyHit)
+        {
+            return;
+        }
+
+        if (invincible)
+        {
+            invincible = false;
+            StartCoroutine(ShieldCooldown());
+            return;
+        }
+
         UnityEngine.SceneManagement.SceneManager.LoadScene(
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
+
+    public void ActivateShield()
+    {
+        invincible = true;
+    }
+
+    private IEnumerator ShieldCooldown()
+    {
+        recentlyHit = true;
+        yield return new WaitForSeconds(2f);
+        recentlyHit = false;
     }
 
 }
