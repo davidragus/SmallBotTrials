@@ -13,4 +13,17 @@ public class Obstacle : MonoBehaviour
             }
         }
     }
+
+    protected virtual void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            PlayerColision player = other.GetComponent<PlayerColision>();
+            if (player != null)
+            {
+                player.Die();
+            }
+        }
+    }
+    
 }
