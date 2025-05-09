@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerColision : MonoBehaviour
 {
     [SerializeField] private bool invincible = false;
+    [SerializeField] private float invincibleTime = 1f;
     private bool recentlyHit = false;
     
     // Start is called before the first frame update
@@ -45,7 +46,7 @@ public class PlayerColision : MonoBehaviour
     private IEnumerator ShieldCooldown()
     {
         recentlyHit = true;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(invincibleTime);
         recentlyHit = false;
     }
 
