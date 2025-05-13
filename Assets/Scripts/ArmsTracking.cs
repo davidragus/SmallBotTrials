@@ -50,6 +50,7 @@ public class ArmsTracking : MonoBehaviour
 		}
 
 		var raycast = mainCamera.ScreenPointToRay(mousePos);
+		// Debug.DrawRay(raycast.origin, raycast.direction * 100f, Color.red);
 		if (Physics.Raycast(raycast, out var hitInfo, Mathf.Infinity, armsTrackingLayer))
 		{
 			return (success: true, position: hitInfo.point);
