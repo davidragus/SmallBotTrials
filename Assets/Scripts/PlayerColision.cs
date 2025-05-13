@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerColision : MonoBehaviour
 {
+    [SerializeField] private GameObject shield;
     [SerializeField] private bool invincible = false;
-    [SerializeField] private float invincibleTime = 1f;
+    [SerializeField] private float invincibleTime = 3f;
     private bool recentlyHit = false;
     
     // Start is called before the first frame update
@@ -29,11 +30,12 @@ public class PlayerColision : MonoBehaviour
 
         if (invincible)
         {
+            shield.SetActive(true);
             invincible = false;
             StartCoroutine(ShieldCooldown());
             return;
         }
-
+        GameManager.Instance.AddDeathCount();
         UnityEngine.SceneManagement.SceneManager.LoadScene(
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
@@ -47,6 +49,7 @@ public class PlayerColision : MonoBehaviour
     {
         recentlyHit = true;
         yield return new WaitForSeconds(invincibleTime);
+        shield.SetActive(false);
         recentlyHit = false;
     }
 
