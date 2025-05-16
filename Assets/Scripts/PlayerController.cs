@@ -22,12 +22,15 @@ public class PlayerController : MonoBehaviour
 
 
 	[Header("Grappling parameters")]
-	public float grappleRange;
+	public float grappleRange = 15f;
 	public bool isGrappling;
 	public bool isHooked;
 	public float armsOffsetDistance = 0.3f;
 	public float playerOffsetDistance = 1f;
 	public Vector3 currentHitPoint;
+
+	[SerializeField] private GameObject grappleIndicator;
+
 
 	void Start()
 	{
@@ -37,6 +40,17 @@ public class PlayerController : MonoBehaviour
 	void Update()
 	{
 		Debug.DrawRay(armRaycast.position, armRaycast.up * grappleRange, Color.red);
+		RaycastHit hit;
+		if (Physics.Raycast(armRaycast.position, armRaycast.up, out hit, grappleRange, grappleLayer))
+		{
+			grappleIndicator.SetActive(true);
+			grappleIndicator.transform.position = hit.point;
+		}
+		else
+		{
+			grappleIndicator.SetActive(false);
+		}
+
 		if (Input.GetKeyDown(KeyCode.Mouse0) && !isGrappling && !isHooked)
 		{
 			ShootArms();
@@ -99,20 +113,24 @@ public class PlayerController : MonoBehaviour
 	{
 		yield return new WaitForSeconds(0.2f);
 		rb.useGravity = false;
-		rb.velocity = new Vector3(0, 0, 0);
+		rb.velocity = Vector3.zero;
+
 		float duration = 0.2f;
 		float elapsed = 0f;
-		Vector3 originalPos = transform.position;
-		Quaternion originalRotation = transform.rotation;
+		Vector3 originalPos = rb.position;
 
 		while (elapsed < duration)
 		{
 			elapsed += Time.deltaTime;
 			float t = elapsed / duration;
-			transform.position = Vector3.Lerp(originalPos, end, t);
+			Vector3 newPos = Vector3.Lerp(originalPos, end, t);
+			rb.MovePosition(newPos);
 			yield return null;
 		}
+
+		rb.MovePosition(end);
 	}
+
 
 	private IEnumerator ReturnArms()
 	{
