@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance { get; private set; }
 	private TextMeshProUGUI deathCountText;
+	[SerializeField] private GameObject shieldUI;
 	private int deathCount = 0;
 
 	private void Awake()
@@ -55,6 +56,19 @@ public class GameManager : MonoBehaviour
 	// {
 	//     UpdateDeathCounterUI();
 	// }
+
+	public void AddShield()
+	{
+		Debug.Log("Add shield");
+		shieldUI.SetActive(true);
+	}
+
+	public void RemoveShield()
+	{
+		Debug.Log("Remove shield");
+		shieldUI.SetActive(false);
+	}
+
 
 	// Update is called once per frame
 	void Update()
