@@ -160,8 +160,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 777ca2877afa46b4482571295bc5a462, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   armsParent: {fileID: 1727389162507441414}
   leftOrigin: {fileID: 5272317390667539288}
   rightOrigin: {fileID: 920507757894319758}
@@ -178,6 +178,7 @@ MonoBehaviour:
   playerOffsetDistance: 1
   currentHitPoint: {x: 0, y: 0, z: 0}
   grappleIndicator: {fileID: 83427119521100651}
+  isDead: 0
 --- !u!114 &8113708147988238093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,8 +189,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e909f3ee36655ec4285de94739d51adc, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   eyesTrackingLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -206,8 +207,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0a70ca81be7ddb47ba5cb1090f39b92, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   leftArm: {fileID: 3459675605200979563}
   rightArm: {fileID: 33878948726210237}
   armRaycast: {fileID: 8706357582196727569}
@@ -225,8 +226,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc064cc75206b474dbd0b09fc2f870c7, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   maxYAngle: 30
 --- !u!1 &2597281628870443779
 GameObject:
@@ -10377,8 +10378,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f8b30261a5534543958e0ac162cac93, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   shield: {fileID: 9115977063390282896}
   invincible: 0
   invincibleTime: 1
