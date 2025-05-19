@@ -69,7 +69,6 @@ public class PlayerController : MonoBehaviour
 			}
 			else
 			{
-				Debug.Log("No more grapples");
 				grappleRange = grappleRangeDefault;
 			}
 			ShootArms();
@@ -221,6 +220,5 @@ public class PlayerController : MonoBehaviour
 	{
 		grappleRange = maxGrappleRange;
 		numberOfGrapples = numberOfGrapplesDefault;
-		Debug.Log("Grapple activated");
 	}
 }
