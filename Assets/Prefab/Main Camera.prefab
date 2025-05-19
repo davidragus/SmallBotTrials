@@ -150,7 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3a51d5b7efb67140b0dc54c1d515a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
+  playerTransform: {fileID: 789633878990723658, guid: 4c64b1041886b8f47a47b091ca9e1e89,
+    type: 3}
   upperMargin: 4
   lowerMargin: 3
   followSpeed: 5
