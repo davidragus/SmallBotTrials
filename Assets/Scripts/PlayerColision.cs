@@ -39,7 +39,10 @@ public class PlayerColision : MonoBehaviour
 			StartCoroutine(ShieldCooldown());
 			return;
 		}
-		StartCoroutine(PlayerDeath());
+		if (!player.GetComponent<PlayerController>().isDead)
+		{
+			StartCoroutine(PlayerDeath());
+		}
 	}
 
 	public void ActivateShield()
@@ -57,6 +60,7 @@ public class PlayerColision : MonoBehaviour
 
 	private IEnumerator PlayerDeath()
 	{
+		player.GetComponent<PlayerController>().isDead = true;
 		rb.isKinematic = true;
 		leftArm.GetComponent<SkinnedMeshRenderer>().sharedMaterial = deathMaterial;
 		rightArm.GetComponent<SkinnedMeshRenderer>().sharedMaterial = deathMaterial;
@@ -65,16 +69,21 @@ public class PlayerColision : MonoBehaviour
 		player.GetComponent<EyesTracking>().enabled = false;
 		player.GetComponent<CharacterRotation>().enabled = false;
 		yield return new WaitForSeconds(0.5f);
+		ExplodePlayer();
+		yield return new WaitForSeconds(5f);
+		GameManager.Instance.AddDeathCount();
+		UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+	}
+
+	private void ExplodePlayer()
+	{
 		GetComponent<MeshRenderer>().enabled = false;
-		explosionFlash.Emit(1);
-		explosionSmoke.Emit(1);
+		explosionFlash.Play();
+		explosionSmoke.Play();
 		leftArm.GetComponent<SkinnedMeshRenderer>().enabled = false;
 		rightArm.GetComponent<SkinnedMeshRenderer>().enabled = false;
 		leftEye.GetComponent<SkinnedMeshRenderer>().enabled = false;
 		rightEye.GetComponent<SkinnedMeshRenderer>().enabled = false;
-		yield return new WaitForSeconds(5f);
-		GameManager.Instance.AddDeathCount();
-		UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 	}
 
 }

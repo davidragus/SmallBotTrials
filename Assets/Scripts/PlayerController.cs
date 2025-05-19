@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
 	[SerializeField] private GameObject grappleIndicator;
 	private bool isHoldingGrapple = false;
+	public bool isDead = false;
 
 
 	void Start()
