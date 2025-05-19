@@ -23,7 +23,8 @@ public class PlayerController : MonoBehaviour
 
 
 	[Header("Grappling parameters")]
-	public float grappleRange = 15f;
+	public float grappleRangeDefault = 15f;
+	private float grappleRange = 15f;
 	public bool isGrappling;
 	public bool isHooked;
 	public float armsOffsetDistance = 0.3f;
@@ -33,6 +34,12 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private GameObject grappleIndicator;
 	private bool isHoldingGrapple = false;
 	public bool isDead = false;
+
+	// 5 More range Grapple
+	[Header("Grappling powerUp parameters")] 
+	public float maxGrappleRange = 20f;
+	private float numberOfGrapples = 0f;
+	public float numberOfGrapplesDefault = 5f;
 
 
 	void Start()
@@ -56,6 +63,15 @@ public class PlayerController : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.Mouse0) && !isGrappling && !isHooked)
 		{
+			if (numberOfGrapples > 0)
+			{
+				numberOfGrapples--;
+			}
+			else
+			{
+				Debug.Log("No more grapples");
+				grappleRange = grappleRangeDefault;
+			}
 			ShootArms();
 		}
 
@@ -199,5 +215,12 @@ public class PlayerController : MonoBehaviour
 
 		isGrappling = false;
 		isHooked = false;
+	}
+
+	public void ActivateGrapple()
+	{
+		grappleRange = maxGrappleRange;
+		numberOfGrapples = numberOfGrapplesDefault;
+		Debug.Log("Grapple activated");
 	}
 }
