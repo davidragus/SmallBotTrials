@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.Animations;
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
 	public Vector3 currentHitPoint;
 
 	[SerializeField] private GameObject grappleIndicator;
+	private bool isHoldingGrapple = false;
 
 
 	void Start()
@@ -55,9 +57,44 @@ public class PlayerController : MonoBehaviour
 		{
 			ShootArms();
 		}
-		else if (Input.GetKeyDown(KeyCode.Mouse0) && isHooked)
+
+		if (Input.GetKey(KeyCode.Mouse0) && isHooked)
 		{
+			isHoldingGrapple = true;
+		}
+
+		if (Input.GetKeyUp(KeyCode.Mouse0) && (isHooked || isGrappling))
+		{
+			isHoldingGrapple = false;
 			StartCoroutine(ReturnArms());
+		}
+	}
+
+	private void FixedUpdate()
+	{
+		if (isHooked && isHoldingGrapple)
+		{
+			Vector3 direction = (currentHitPoint - rb.position).normalized;
+
+			rb.AddForce(direction * 100f, ForceMode.Acceleration);
+
+			float maxSpeed = 20f;
+			if (rb.velocity.magnitude > maxSpeed)
+			{
+				rb.velocity = rb.velocity.normalized * maxSpeed;
+			}
+
+			float distance = Vector3.Distance(rb.position, currentHitPoint);
+			if (distance < 1.5f)
+			{
+				rb.velocity = Vector3.zero;
+				rb.useGravity = false;
+			}
+
+			if (rb.velocity.y < 0f)
+			{
+				rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+			}
 		}
 	}
 
@@ -75,8 +112,7 @@ public class PlayerController : MonoBehaviour
 			Vector3 playerOffset = hit.normal * playerOffsetDistance;
 
 			StartCoroutine(MoveArms(currentHitPoint + armsOffset));
-			isHooked = true;
-			StartCoroutine(MovePlayer(currentHitPoint + playerOffset));
+			// StartCoroutine(MovePlayer(currentHitPoint + playerOffset));
 		}
 		else
 		{
@@ -85,7 +121,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	private IEnumerator MoveArms(Vector3 end, bool returnAfter = false)
+	private IEnumerator MoveArms(Vector3 end, bool missed = false)
 	{
 		float duration = 0.2f;
 		float elapsed = 0f;
@@ -102,34 +138,44 @@ public class PlayerController : MonoBehaviour
 		leftArm.position = end;
 		rightArm.position = end;
 
-		if (returnAfter)
+		if (missed)
 		{
 			StartCoroutine(ReturnArms());
 			yield return null;
 		}
-	}
-
-	private IEnumerator MovePlayer(Vector3 end)
-	{
-		yield return new WaitForSeconds(0.2f);
-		rb.useGravity = false;
-		rb.velocity = Vector3.zero;
-
-		float duration = 0.2f;
-		float elapsed = 0f;
-		Vector3 originalPos = rb.position;
-
-		while (elapsed < duration)
+		else
 		{
-			elapsed += Time.deltaTime;
-			float t = elapsed / duration;
-			Vector3 newPos = Vector3.Lerp(originalPos, end, t);
-			rb.MovePosition(newPos);
+			isHooked = true;
 			yield return null;
 		}
-
-		rb.MovePosition(end);
 	}
+
+	// private IEnumerator MovePlayer(Vector3 end)
+	// {
+	// 	yield return new WaitForSeconds(0.2f);
+
+	// 	// rb.useGravity = false;
+	// 	// rb.velocity = Vector3.zero;
+
+	// 	// float duration = 0.2f;
+	// 	// float elapsed = 0f;
+	// 	// Vector3 originalPos = rb.position;
+
+	// 	// while (elapsed < duration)
+	// 	// {
+	// 	// 	elapsed += Time.deltaTime;
+	// 	// 	float t = elapsed / duration;
+	// 	// 	Vector3 newPos = Vector3.Lerp(originalPos, end, t);
+	// 	// 	rb.MovePosition(newPos);
+	// 	// 	yield return null;
+	// 	// }
+
+	// 	// rb.MovePosition(end);
+
+	// 	Vector3 impulseDirection = (end - rb.position).normalized;
+	// 	rb.velocity = Vector3.zero;
+	// 	rb.AddForce(impulseDirection * 1000f, ForceMode.Impulse);
+	// }
 
 
 	private IEnumerator ReturnArms()
