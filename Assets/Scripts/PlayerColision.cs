@@ -19,26 +19,25 @@ public class PlayerColision : MonoBehaviour
 	[SerializeField] private ParticleSystem explosionSmoke;
 	private bool recentlyHit = false;
 	private Rigidbody rb;
-	// private Vector3 velocityBeforeCollision;
+	private Vector3 velocityBeforeCollision;
 
 	public void Start()
 	{
 		rb = GetComponentInParent<Rigidbody>();
 	}
 
-	// private void FixedUpdate()
-	// {
-	// 	velocityBeforeCollision = rb.velocity;
-	// 	// Debug.Log(velocityBeforeCollision);
-	// }
+	private void FixedUpdate()
+	{
+		velocityBeforeCollision = rb.velocity;
+	}
 
-	// private void OnCollisionEnter(Collision collision)
-	// {
-	// 	if (velocityBeforeCollision.magnitude > 5f)
-	// 	{
-	// 		SoundManager.PlaySound(SoundType.HitWall);
-	// 	}
-	// }
+	private void OnCollisionEnter(Collision collision)
+	{
+		if (velocityBeforeCollision.magnitude > 5f)
+		{
+			SoundManager.PlaySound(SoundType.HitWall);
+		}
+	}
 
 	public void Die()
 	{
