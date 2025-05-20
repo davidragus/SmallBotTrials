@@ -2,17 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrapplePowerUp : MonoBehaviour
+public class GrapplePowerUp : PowerUp
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void OnTriggerEnter(Collider other)
+{
+    if (other.CompareTag("Player"))
     {
-        
-    }
+        PlayerController player = other.GetComponent<PlayerController>();
+        if (player == null)
+        {
+            player = other.GetComponentInParent<PlayerController>();
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (player != null)
+        {
+            player.ActivateGrapple();
+            base.OnTriggerEnter(other);
+        }
+        else
+        {
+            Debug.LogWarning("El objeto con tag 'Player' no tiene PlayerController.");
+        }
     }
+}
+
 }
