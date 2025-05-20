@@ -19,11 +19,26 @@ public class PlayerColision : MonoBehaviour
 	[SerializeField] private ParticleSystem explosionSmoke;
 	private bool recentlyHit = false;
 	private Rigidbody rb;
+	// private Vector3 velocityBeforeCollision;
 
 	public void Start()
 	{
 		rb = GetComponentInParent<Rigidbody>();
 	}
+
+	// private void FixedUpdate()
+	// {
+	// 	velocityBeforeCollision = rb.velocity;
+	// 	// Debug.Log(velocityBeforeCollision);
+	// }
+
+	// private void OnCollisionEnter(Collision collision)
+	// {
+	// 	if (velocityBeforeCollision.magnitude > 5f)
+	// 	{
+	// 		SoundManager.PlaySound(SoundType.HitWall);
+	// 	}
+	// }
 
 	public void Die()
 	{
@@ -70,7 +85,10 @@ public class PlayerColision : MonoBehaviour
 		player.GetComponent<ArmsTracking>().enabled = false;
 		player.GetComponent<EyesTracking>().enabled = false;
 		player.GetComponent<CharacterRotation>().enabled = false;
+		SoundManager.PlaySound(SoundType.BuildUpDeath);
 		yield return new WaitForSeconds(0.5f);
+		SoundManager.PlaySound(SoundType.Explosion);
+		SoundManager.PlaySound(SoundType.Death);
 		ExplodePlayer();
 		yield return new WaitForSeconds(5f);
 		GameManager.Instance.AddDeathCount();
@@ -80,12 +98,12 @@ public class PlayerColision : MonoBehaviour
 	private void ExplodePlayer()
 	{
 		GetComponent<MeshRenderer>().enabled = false;
-		explosionFlash.Play();
-		explosionSmoke.Play();
 		leftArm.GetComponent<SkinnedMeshRenderer>().enabled = false;
 		rightArm.GetComponent<SkinnedMeshRenderer>().enabled = false;
 		leftEye.GetComponent<SkinnedMeshRenderer>().enabled = false;
 		rightEye.GetComponent<SkinnedMeshRenderer>().enabled = false;
+		explosionFlash.Play();
+		explosionSmoke.Play();
 	}
 
 }
