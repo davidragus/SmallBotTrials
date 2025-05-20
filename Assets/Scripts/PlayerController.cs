@@ -54,8 +54,9 @@ public class PlayerController : MonoBehaviour
 			grappleIndicator.SetActive(false);
 		}
 
-		if (Input.GetKeyDown(KeyCode.Mouse0) && !isGrappling && !isHooked)
+		if (Input.GetKeyDown(KeyCode.Mouse0) && !isGrappling && !isHooked && !isDead)
 		{
+			SoundManager.PlaySound(SoundType.ShootArms, 1f, Random.Range(0.9f, 1.1f));
 			ShootArms();
 		}
 
@@ -64,8 +65,9 @@ public class PlayerController : MonoBehaviour
 			isHoldingGrapple = true;
 		}
 
-		if (Input.GetKeyUp(KeyCode.Mouse0) && (isHooked || isGrappling))
+		if (Input.GetKeyUp(KeyCode.Mouse0) && (isHooked || isGrappling) && !isDead)
 		{
+			SoundManager.PlaySound(SoundType.RetrieveArms, 1f, Random.Range(0.9f, 1.1f));
 			isHoldingGrapple = false;
 			StartCoroutine(ReturnArms());
 		}
@@ -177,7 +179,6 @@ public class PlayerController : MonoBehaviour
 	// 	rb.velocity = Vector3.zero;
 	// 	rb.AddForce(impulseDirection * 1000f, ForceMode.Impulse);
 	// }
-
 
 	private IEnumerator ReturnArms()
 	{
