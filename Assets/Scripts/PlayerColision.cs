@@ -50,6 +50,7 @@ public class PlayerColision : MonoBehaviour
 		if (invincible)
 		{
 			shield.SetActive(true);
+			GameManager.Instance.RemoveShield();
 			invincible = false;
 			StartCoroutine(ShieldCooldown());
 			return;
@@ -62,6 +63,7 @@ public class PlayerColision : MonoBehaviour
 
 	public void ActivateShield()
 	{
+		GameManager.Instance.AddShield();
 		invincible = true;
 	}
 
