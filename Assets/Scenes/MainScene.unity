@@ -404,6 +404,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548762964}
   m_CullTransparentMesh: 1
+--- !u!114 &779504770 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7969169630215915392, guid: 19799e4d9ae999742bf15d8ee4a58711,
+    type: 3}
+  m_PrefabInstance: {fileID: 33504166}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d8a87c2762194a4b981806971cc3a84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1760187804
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,7 +617,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 779504770}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ChangeScene
         m_Mode: 1
