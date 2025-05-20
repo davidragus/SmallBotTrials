@@ -37,7 +37,7 @@ public class CharacterRotation : MonoBehaviour
 
 	private void RotatePlayer()
 	{
-		Quaternion desired = Quaternion.Euler(0f, targetYaw, 0f);
+		Quaternion desired = Quaternion.Euler(-90f, targetYaw, -90f);
 		rb.MoveRotation(desired);
 	}
 }
