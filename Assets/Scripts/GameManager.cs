@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
 	private TextMeshProUGUI deathCountText;
 	[SerializeField] private GameObject shieldUI;
 	private int deathCount = 0;
+	[SerializeField] private int sceneToLoad = 3;
 
 	private void Awake()
 	{
@@ -59,6 +61,10 @@ public class GameManager : MonoBehaviour
 
 	public void AddShield()
 	{
+		if (shieldUI == null)
+		{
+			shieldUI = GameObject.Find("ShieldAlpha");
+		}
 		Debug.Log("Add shield");
 		shieldUI.SetActive(true);
 	}
@@ -69,6 +75,11 @@ public class GameManager : MonoBehaviour
 		shieldUI.SetActive(false);
 	}
 
+    public void ChangeScene()
+    {
+
+        SceneManager.LoadScene(sceneToLoad);
+    }
 
 	// Update is called once per frame
 	void Update()
