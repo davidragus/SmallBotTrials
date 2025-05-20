@@ -10,7 +10,9 @@ public enum SoundType
 	Death,
 	ShootArms,
 	RetrieveArms,
-	HitWall
+	HardHit,
+	MediumHit,
+	SoftHit,
 }
 
 [RequireComponent(typeof(AudioSource)), ExecuteInEditMode]
