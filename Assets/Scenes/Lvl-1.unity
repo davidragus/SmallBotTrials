@@ -614,11 +614,21 @@ MonoBehaviour:
   - name: RetrieveArms
     sounds:
     - {fileID: 8300000, guid: 42e906697937d7546ac05b3af535a7db, type: 3}
-  - name: HitWall
+  - name: HardHit
     sounds:
     - {fileID: 8300000, guid: 363cd93a5eb1d2c459916ea56db7b0da, type: 3}
     - {fileID: 8300000, guid: 8f28826e992a4fa40828b21fea8409fc, type: 3}
     - {fileID: 8300000, guid: 495c04dccfa0535409399d0c44fd1b30, type: 3}
+  - name: MediumHit
+    sounds:
+    - {fileID: 8300000, guid: 4a2585b6fca845341a65faeef2858c1c, type: 3}
+    - {fileID: 8300000, guid: f918fa29e6e92ec4b8f72a550d7f16c4, type: 3}
+    - {fileID: 8300000, guid: 9afa7d72d37ac464a81fd52ffe9f8ede, type: 3}
+  - name: SoftHit
+    sounds:
+    - {fileID: 8300000, guid: a911dae65137e464fa5a514eaede21e7, type: 3}
+    - {fileID: 8300000, guid: cb6d10c762400334897ac5df344e1e28, type: 3}
+    - {fileID: 8300000, guid: 529287c6f0e6b524087dc92b80c077a0, type: 3}
 --- !u!1 &566475561
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,9 +33,18 @@ public class PlayerColision : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		if (velocityBeforeCollision.magnitude > 5f)
+		if (velocityBeforeCollision.magnitude > 12f)
 		{
-			SoundManager.PlaySound(SoundType.HitWall);
+			SoundManager.PlaySound(SoundType.HardHit);
+		}
+		else if (velocityBeforeCollision.magnitude > 6f)
+		{
+			SoundManager.PlaySound(SoundType.MediumHit);
+
+		}
+		else if (velocityBeforeCollision.magnitude > 1f)
+		{
+			SoundManager.PlaySound(SoundType.SoftHit);
 		}
 	}
 

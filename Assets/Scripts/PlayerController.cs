@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
 	public bool isDead = false;
 
 	// 5 More range Grapple
-	[Header("Grappling powerUp parameters")] 
+	[Header("Grappling powerUp parameters")]
 	public float maxGrappleRange = 20f;
 	private float numberOfGrapples = 0f;
 	public float numberOfGrapplesDefault = 5f;
@@ -167,33 +167,6 @@ public class PlayerController : MonoBehaviour
 			yield return null;
 		}
 	}
-
-	// private IEnumerator MovePlayer(Vector3 end)
-	// {
-	// 	yield return new WaitForSeconds(0.2f);
-
-	// 	// rb.useGravity = false;
-	// 	// rb.velocity = Vector3.zero;
-
-	// 	// float duration = 0.2f;
-	// 	// float elapsed = 0f;
-	// 	// Vector3 originalPos = rb.position;
-
-	// 	// while (elapsed < duration)
-	// 	// {
-	// 	// 	elapsed += Time.deltaTime;
-	// 	// 	float t = elapsed / duration;
-	// 	// 	Vector3 newPos = Vector3.Lerp(originalPos, end, t);
-	// 	// 	rb.MovePosition(newPos);
-	// 	// 	yield return null;
-	// 	// }
-
-	// 	// rb.MovePosition(end);
-
-	// 	Vector3 impulseDirection = (end - rb.position).normalized;
-	// 	rb.velocity = Vector3.zero;
-	// 	rb.AddForce(impulseDirection * 1000f, ForceMode.Impulse);
-	// }
 
 	private IEnumerator ReturnArms()
 	{
