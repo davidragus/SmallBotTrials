@@ -60,7 +60,7 @@ public class PauseMenu : MonoBehaviour
 		isPaused = false;
 	}
 
-	void ShowControls()
+	public void ShowControls()
 	{
 		pauseMenuPanel.SetActive(false);
 		controlsPanel.SetActive(true);

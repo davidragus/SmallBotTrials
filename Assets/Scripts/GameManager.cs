@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance { get; private set; }
 	private TextMeshProUGUI deathCountText;
-	//[SerializeField] private GameObject shieldUI;
 	private int deathCount = 0;
 	[SerializeField] private int sceneToLoad = 1;
 
@@ -17,6 +16,10 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private GameObject gameOverCanvas;
 	public Button quitButton;
     public Button retryButton;
+
+	[SerializeField] private GameObject shieldUI;
+	[SerializeField] private TextMeshProUGUI moreGrappleNumberText;
+	[SerializeField] private float numberOfGrapples = 0;
 
 	private void Awake()
 	{
@@ -43,18 +46,24 @@ public class GameManager : MonoBehaviour
 
 	public void AddShield()
 	{
-		// if (shieldUI == null)
-		// {
-		// 	shieldUI = GameObject.Find("ShieldAlpha");
-		// }
-		// Debug.Log("Add shield");
-		// shieldUI.SetActive(true);
+		if (shieldUI == null)
+		{
+			shieldUI = GameObject.Find("ShieldAlpha");
+		}
+		Debug.Log("Add shield");
+		shieldUI.SetActive(true);
 	}
 
 	public void RemoveShield()
 	{
-		// Debug.Log("Remove shield");
-		// shieldUI.SetActive(false);
+		Debug.Log("Remove shield");
+		shieldUI.SetActive(false);
+	}
+
+	public void UpdateGrappleText(float numberOfGrapples)
+	{
+		this.numberOfGrapples = numberOfGrapples;
+		moreGrappleNumberText.text = this.numberOfGrapples.ToString();
 	}
 
 	public void ChangeScene()
@@ -92,6 +101,11 @@ public class GameManager : MonoBehaviour
     #else
             Application.Quit();
     #endif
+	}
+
+	public void changeSceneLoad(int sceneToLoad)
+	{
+		this.sceneToLoad = sceneToLoad;
 	}
 
 }

@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
+		GameManager.Instance.UpdateGrappleText(numberOfGrapples);
 		Debug.DrawRay(armRaycast.position, armRaycast.up * grappleRange, Color.red);
 		RaycastHit hit;
 		if (Physics.Raycast(armRaycast.position, armRaycast.up, out hit, grappleRange, grappleLayer))
