@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 	private TextMeshProUGUI deathCountText;
 	//[SerializeField] private GameObject shieldUI;
 	private int deathCount = 0;
-	[SerializeField] private int sceneToLoad = 3;
+	[SerializeField] private int sceneToLoad = 1;
 
 	// Gameover canvas
 	[SerializeField] private GameObject gameOverCanvas;
@@ -57,11 +57,11 @@ public class GameManager : MonoBehaviour
 		// shieldUI.SetActive(false);
 	}
 
-    public void ChangeScene()
-    {
+	public void ChangeScene()
+	{
 
-        SceneManager.LoadScene(sceneToLoad);
-    }
+		SceneManager.LoadScene(sceneToLoad);
+	}
 
 	void Update()
 	{
