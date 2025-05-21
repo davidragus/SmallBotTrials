@@ -825,6 +825,7 @@ MonoBehaviour:
   shieldUI: {fileID: 3370288926098997978}
   moreGrappleNumberText: {fileID: 4154835031851061852}
   numberOfGrapples: 0
+  controlsPanel: {fileID: 4972972292281594563}
 --- !u!114 &883893404994743197
 MonoBehaviour:
   m_ObjectHideFlags: 0

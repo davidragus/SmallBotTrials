@@ -103,4 +103,9 @@ public class GameManager : MonoBehaviour
     #endif
 	}
 
+	public void changeSceneLoad(int sceneToLoad)
+	{
+		this.sceneToLoad = sceneToLoad;
+	}
+
 }
