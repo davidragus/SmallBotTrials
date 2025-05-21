@@ -5006,7 +5006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a8d6f29044b5146b9dff08e7e8d668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle: {fileID: 9194740321962695492}
+  particula: {fileID: 0}
 --- !u!65 &5765156497921662700
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5026,8 +5026,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.006, y: 0.005999999, z: 0.0018506155}
-  m_Center: {x: 0, y: -6.5747078e-18, z: 0.00092530774}
+  m_Size: {x: 0.005483757, y: 0.00595445, z: 0.0015784529}
+  m_Center: {x: 0, y: 7.105428e-18, z: 0.00079625164}
 --- !u!4 &8807435822812661068 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 308f99ee9cbf9494782c2fd19fc15fd3,
