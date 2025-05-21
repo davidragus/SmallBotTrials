@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.Animations;
 
@@ -109,7 +108,7 @@ public class PlayerController : MonoBehaviour
 				rb.useGravity = false;
 			}
 
-			if (rb.velocity.y < 0f)
+			if (rb.velocity.y < 0f && rb.position.y < currentHitPoint.y)
 			{
 				rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 			}

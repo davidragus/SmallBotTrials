@@ -48,14 +48,14 @@ public class PlayerColision : MonoBehaviour
 		}
 	}
 
-	public void Die()
+	public void Die(bool ignoreInvincibility = false)
 	{
 		if (recentlyHit)
 		{
 			return;
 		}
 
-		if (invincible)
+		if (invincible && !ignoreInvincibility)
 		{
 			shield.SetActive(true);
 			GameManager.Instance.RemoveShield();
