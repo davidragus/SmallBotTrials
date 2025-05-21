@@ -153,5 +153,5 @@ MonoBehaviour:
   playerTransform: {fileID: 789633878990723658, guid: 4c64b1041886b8f47a47b091ca9e1e89,
     type: 3}
   upperMargin: 4
-  lowerMargin: 3
+  lowerMargin: 4
   followSpeed: 5
