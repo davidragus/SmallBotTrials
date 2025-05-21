@@ -13,6 +13,7 @@ public enum SoundType
 	HardHit,
 	MediumHit,
 	SoftHit,
+	GrabPowerUp
 }
 
 [RequireComponent(typeof(AudioSource)), ExecuteInEditMode]

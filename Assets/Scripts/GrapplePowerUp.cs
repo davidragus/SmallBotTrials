@@ -16,6 +16,7 @@ public class GrapplePowerUp : PowerUp
 
 			if (player != null)
 			{
+				SoundManager.PlaySound(SoundType.GrabPowerUp, 1f, Random.Range(0.9f, 1.1f));
 				player.ActivateGrapple();
 				base.OnTriggerEnter(other);
 			}

@@ -46,12 +46,12 @@ public class CameraFollowPlayer : MonoBehaviour
 
 			if (Input.GetKey(KeyCode.LeftShift))
 			{
-				float screenThirdHeight = Screen.height / 3f;
-				if (Input.mousePosition.y < screenThirdHeight)
+				float screenHalfHeight = Screen.height / 2f;
+				if (Input.mousePosition.y < screenHalfHeight)
 				{
 					cameraY = Mathf.Lerp(cameraY, playerY - upperMargin * 2.5f, Time.deltaTime * followSpeed);
 				}
-				else if (Input.mousePosition.y > screenThirdHeight * 2)
+				else
 				{
 					cameraY = Mathf.Lerp(cameraY, playerY + lowerMargin * 2.5f, Time.deltaTime * followSpeed);
 				}
