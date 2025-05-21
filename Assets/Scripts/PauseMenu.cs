@@ -60,7 +60,7 @@ public class PauseMenu : MonoBehaviour
 		isPaused = false;
 	}
 
-	void ShowControls()
+	public void ShowControls()
 	{
 		pauseMenuPanel.SetActive(false);
 		controlsPanel.SetActive(true);
@@ -72,13 +72,13 @@ public class PauseMenu : MonoBehaviour
 		pauseMenuPanel.SetActive(true);
 	}
 
-	void QuitGame()
-	{
-		// Si estás en el editor
-#if UNITY_EDITOR
-		UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
-	}
+    void QuitGame()
+    {
+            // Si estás en el editor
+    #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+    #else
+            Application.Quit();
+    #endif
+    }
 }

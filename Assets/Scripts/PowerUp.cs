@@ -8,7 +8,7 @@ public class PowerUp : MonoBehaviour
     public float floatAmplitude = 0.25f;
     public float floatFrequency = 1f;
 
-    private Vector3 startPos;
+    protected Vector3 startPos;
 
     protected void Start()
     {
@@ -25,7 +25,7 @@ public class PowerUp : MonoBehaviour
         Destroy(gameObject);
     }
 
-    protected void Movement()
+    protected virtual void Movement()
     {
         transform.Rotate(0f, rotationSpeed * Time.deltaTime, 0f);
 
