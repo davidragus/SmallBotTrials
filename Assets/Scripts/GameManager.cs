@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
 	public void AddDeathCount()
 	{
 		deathCount++;
+		Debug.Log("Death count: " + deathCount);
 	}
 
 	public int GetDeathCounter()
@@ -103,7 +104,7 @@ public class GameManager : MonoBehaviour
     #endif
 	}
 
-	public void changeSceneLoad(int sceneToLoad)
+	public void ChangeSceneLoad(int sceneToLoad)
 	{
 		this.sceneToLoad = sceneToLoad;
 	}
