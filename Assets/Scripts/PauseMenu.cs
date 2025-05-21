@@ -74,11 +74,11 @@ public class PauseMenu : MonoBehaviour
 
     void QuitGame()
     {
-        // Si estás en el editor
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+            // Si estás en el editor
+    #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+    #else
+            Application.Quit();
+    #endif
     }
 }

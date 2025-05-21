@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -11,6 +12,11 @@ public class GameManager : MonoBehaviour
 	//[SerializeField] private GameObject shieldUI;
 	private int deathCount = 0;
 	[SerializeField] private int sceneToLoad = 3;
+
+	// Gameover canvas
+	[SerializeField] private GameObject gameOverCanvas;
+	public Button quitButton;
+    public Button retryButton;
 
 	private void Awake()
 	{
@@ -61,4 +67,31 @@ public class GameManager : MonoBehaviour
 	{
 
 	}
+
+	void Start()
+	{
+		quitButton.onClick.AddListener(QuitGame);
+		retryButton.onClick.AddListener(RetryGame);
+	}
+
+	public void GameOver()
+	{
+		gameOverCanvas.SetActive(true);
+	}
+
+	public void RetryGame()
+	{
+		gameOverCanvas.SetActive(false);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
+
+	public void QuitGame()
+	{
+	#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+    #else
+            Application.Quit();
+    #endif
+	}
+
 }
