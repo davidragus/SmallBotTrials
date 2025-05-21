@@ -98,9 +98,9 @@ public class PlayerColision : MonoBehaviour
 		SoundManager.PlaySound(SoundType.Explosion);
 		SoundManager.PlaySound(SoundType.Death);
 		ExplodePlayer();
-		yield return new WaitForSeconds(5f);
+		GameManager.Instance.GameOver();
 		GameManager.Instance.AddDeathCount();
-		UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+		// UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 	}
 
 	private void ExplodePlayer()
