@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance { get; private set; }
 	private TextMeshProUGUI deathCountText;
-	[SerializeField] private GameObject shieldUI;
+	//[SerializeField] private GameObject shieldUI;
 	private int deathCount = 0;
 	[SerializeField] private int sceneToLoad = 3;
 
@@ -28,51 +28,27 @@ public class GameManager : MonoBehaviour
 	public void AddDeathCount()
 	{
 		deathCount++;
-		// UpdateDeathCounterUI();
 	}
-
-	// private void UpdateDeathCounterUI()
-	// {
-	//     if (deathCountText == null)
-	//     {
-	//         GameObject deathCounterObject = GameObject.Find("DeathCounter");
-	//         if (deathCounterObject != null)
-	//         {
-	//             deathCountText = deathCounterObject.GetComponent<TextMeshProUGUI>();
-	//         }
-	//     }
-
-	//     if (deathCountText != null)
-	//     {
-	//         deathCountText.text = deathCount.ToString();
-	//     }
-	// }
 
 	public int GetDeathCounter()
 	{
 		return deathCount;
 	}
 
-	// Start is called before the first frame update
-	// void Start()
-	// {
-	//     UpdateDeathCounterUI();
-	// }
-
 	public void AddShield()
 	{
-		if (shieldUI == null)
-		{
-			shieldUI = GameObject.Find("ShieldAlpha");
-		}
-		Debug.Log("Add shield");
-		shieldUI.SetActive(true);
+		// if (shieldUI == null)
+		// {
+		// 	shieldUI = GameObject.Find("ShieldAlpha");
+		// }
+		// Debug.Log("Add shield");
+		// shieldUI.SetActive(true);
 	}
 
 	public void RemoveShield()
 	{
-		Debug.Log("Remove shield");
-		shieldUI.SetActive(false);
+		// Debug.Log("Remove shield");
+		// shieldUI.SetActive(false);
 	}
 
     public void ChangeScene()
@@ -81,7 +57,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneToLoad);
     }
 
-	// Update is called once per frame
 	void Update()
 	{
 
