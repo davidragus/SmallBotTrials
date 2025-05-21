@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
 	public void AddDeathCount()
 	{
 		deathCount++;
+		Debug.Log("Death count: " + deathCount);
 	}
 
 	public int GetDeathCounter()
