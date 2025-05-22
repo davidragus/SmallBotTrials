@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 	// Gameover canvas
 	[SerializeField] private GameObject gameOverCanvas;
 	public Button quitButton;
-    public Button retryButton;
+	public Button retryButton;
 
 	[SerializeField] private GameObject shieldUI;
 	[SerializeField] private TextMeshProUGUI moreGrappleNumberText;
@@ -97,11 +97,11 @@ public class GameManager : MonoBehaviour
 
 	public void QuitGame()
 	{
-	#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-    #else
+#if UNITY_EDITOR
+		UnityEditor.EditorApplication.isPlaying = false;
+#else
             Application.Quit();
-    #endif
+#endif
 	}
 
 	public void ChangeSceneLoad(int sceneToLoad)
