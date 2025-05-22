@@ -1971,6 +1971,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 592594607677029060, guid: 1ad203618a23195479b87537329984e9,
+        type: 3}
+      propertyPath: isWin
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2549208612578553556, guid: 1ad203618a23195479b87537329984e9,
         type: 3}
       propertyPath: m_Name

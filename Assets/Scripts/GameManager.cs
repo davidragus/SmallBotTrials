@@ -14,8 +14,9 @@ public class GameManager : MonoBehaviour
 
 	// Gameover canvas
 	[SerializeField] private GameObject gameOverCanvas;
+	[SerializeField] private GameObject winCanvas;
 	public Button quitButton;
-    public Button retryButton;
+	public Button retryButton;
 
 	[SerializeField] private GameObject shieldUI;
 	[SerializeField] private TextMeshProUGUI moreGrappleNumberText;
@@ -97,16 +98,41 @@ public class GameManager : MonoBehaviour
 
 	public void QuitGame()
 	{
-	#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-    #else
+#if UNITY_EDITOR
+		UnityEditor.EditorApplication.isPlaying = false;
+#else
             Application.Quit();
-    #endif
+#endif
 	}
 
 	public void ChangeSceneLoad(int sceneToLoad)
 	{
 		this.sceneToLoad = sceneToLoad;
+	}
+
+	public void GoMainMenu()
+	{
+		Debug.Log("Go to main menu");
+		sceneToLoad = 1;
+		SceneManager.LoadScene(0);
+	}
+
+	public void WinGame()
+	{
+		if (winCanvas != null)
+		{
+			Time.timeScale = 0f;
+			GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
+			player.GetComponent<PlayerController>().enabled = false;
+			player.GetComponent<EyesTracking>().enabled = false;
+			player.GetComponent<ArmsTracking>().enabled = false;
+			player.GetComponent<CharacterRotation>().enabled = false;
+			winCanvas.SetActive(true);
+		}
+		else
+		{
+			Debug.LogError("Win canvas is null");
+		}
 	}
 
 }

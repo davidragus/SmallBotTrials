@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class CrownPowerUp : PowerUp
 {
+    [SerializeField] private bool isWin = false;
     [Header("Scene")]
     [SerializeField] private int SceneNumber = 0;
 
-    protected override void OnTriggerEnter(Collider other){
-        GameManager.Instance.ChangeSceneLoad(SceneNumber);
-        GameManager.Instance.ChangeScene();
+    protected override void OnTriggerEnter(Collider other)
+    {
+        if (isWin)
+        {
+            GameManager.Instance.WinGame();
+        }
+        else
+        {
+            GameManager.Instance.ChangeSceneLoad(SceneNumber);
+            GameManager.Instance.ChangeScene();
+        }
+        
     }
     protected override void Movement()
     {
