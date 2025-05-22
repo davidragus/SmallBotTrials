@@ -34,12 +34,13 @@ public class SoundManager : MonoBehaviour
 		audioSource = GetComponent<AudioSource>();
 	}
 
+	public static float MasterVolume = 0.5f;
 	public static void PlaySound(SoundType sound, float volume = 1f, float pitch = 1f)
 	{
 		AudioClip[] clips = instance.soundList[(int)sound].Sounds;
 		AudioClip randClip = clips[UnityEngine.Random.Range(0, clips.Length)];
 		instance.audioSource.pitch = pitch;
-		instance.audioSource.PlayOneShot(randClip, volume);
+		instance.audioSource.PlayOneShot(randClip, volume * MasterVolume);
 	}
 
 #if UNITY_EDITOR
