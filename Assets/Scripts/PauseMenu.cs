@@ -38,26 +38,32 @@ public class PauseMenu : MonoBehaviour
 	void PauseGame()
 	{
 		Time.timeScale = 0f;
-		GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
-		player.GetComponent<PlayerController>().enabled = false;
-		player.GetComponent<EyesTracking>().enabled = false;
-		player.GetComponent<ArmsTracking>().enabled = false;
-		player.GetComponent<CharacterRotation>().enabled = false;
-		pauseMenuPanel.SetActive(true);
-		isPaused = true;
+		GameObject player = GameObject.FindWithTag("Player");
+		if (player)
+		{
+			player.GetComponent<PlayerController>().enabled = false;
+			player.GetComponent<EyesTracking>().enabled = false;
+			player.GetComponent<ArmsTracking>().enabled = false;
+			player.GetComponent<CharacterRotation>().enabled = false;
+			pauseMenuPanel.SetActive(true);
+			isPaused = true;
+		}
 	}
 
 	public void ResumeGame()
 	{
 		Time.timeScale = 1f;
-		GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
-		player.GetComponent<PlayerController>().enabled = true;
-		player.GetComponent<EyesTracking>().enabled = true;
-		player.GetComponent<ArmsTracking>().enabled = true;
-		player.GetComponent<CharacterRotation>().enabled = true;
-		pauseMenuPanel.SetActive(false);
-		controlsPanel.SetActive(false);
-		isPaused = false;
+		GameObject player = GameObject.FindWithTag("Player");
+		if (player)
+		{
+			player.GetComponent<PlayerController>().enabled = true;
+			player.GetComponent<EyesTracking>().enabled = true;
+			player.GetComponent<ArmsTracking>().enabled = true;
+			player.GetComponent<CharacterRotation>().enabled = true;
+			pauseMenuPanel.SetActive(false);
+			controlsPanel.SetActive(false);
+			isPaused = false;
+		}
 	}
 
 	public void ShowControls()
@@ -72,13 +78,13 @@ public class PauseMenu : MonoBehaviour
 		pauseMenuPanel.SetActive(true);
 	}
 
-    void QuitGame()
-    {
-            // Si estás en el editor
-    #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-    #else
+	void QuitGame()
+	{
+		// Si estás en el editor
+#if UNITY_EDITOR
+		UnityEditor.EditorApplication.isPlaying = false;
+#else
             Application.Quit();
-    #endif
-    }
+#endif
+	}
 }
