@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
 
 	void Start()
 	{
-		quitButton.onClick.AddListener(QuitGame);
+		quitButton.onClick.AddListener(GoMainMenu);
 		retryButton.onClick.AddListener(RetryGame);
 	}
 
@@ -98,11 +98,11 @@ public class GameManager : MonoBehaviour
 
 	public void QuitGame()
 	{
-#if UNITY_EDITOR
-		UnityEditor.EditorApplication.isPlaying = false;
-#else
-            Application.Quit();
-#endif
+	#if UNITY_EDITOR
+			UnityEditor.EditorApplication.isPlaying = false;
+	#else
+				Application.Quit();
+	#endif
 	}
 
 	public void ChangeSceneLoad(int sceneToLoad)
