@@ -114,6 +114,10 @@ public class PlayerController : MonoBehaviour
 				rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 			}
 		}
+		else
+		{
+			if (rb.useGravity == false) rb.useGravity = true;
+		}
 	}
 
 	private void ShootArms()
