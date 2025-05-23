@@ -98,11 +98,11 @@ public class GameManager : MonoBehaviour
 
 	public void QuitGame()
 	{
-	#if UNITY_EDITOR
-			UnityEditor.EditorApplication.isPlaying = false;
-	#else
+#if UNITY_EDITOR
+		UnityEditor.EditorApplication.isPlaying = false;
+#else
 				Application.Quit();
-	#endif
+#endif
 	}
 
 	public void ChangeSceneLoad(int sceneToLoad)
@@ -117,6 +117,7 @@ public class GameManager : MonoBehaviour
 		Time.timeScale = 1f;
 		sceneToLoad = 1;
 		SceneManager.LoadScene(0);
+		deathCount = 0;
 	}
 
 	public void WinGame()
