@@ -112,7 +112,9 @@ public class GameManager : MonoBehaviour
 
 	public void GoMainMenu()
 	{
-		Debug.Log("Go to main menu");
+		gameOverCanvas.SetActive(false);
+		winCanvas.SetActive(false);
+		Time.timeScale = 1f;
 		sceneToLoad = 1;
 		SceneManager.LoadScene(0);
 	}
