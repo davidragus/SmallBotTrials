@@ -98,6 +98,7 @@ public class PlayerColision : MonoBehaviour
 		SoundManager.PlaySound(SoundType.Explosion);
 		SoundManager.PlaySound(SoundType.Death);
 		ExplodePlayer();
+		GameManager.Instance.RemoveShield();
 		GameManager.Instance.AddDeathCount();
 		GameManager.Instance.GameOver();
 		
