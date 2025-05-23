@@ -291,8 +291,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tu personaje se mueve usando ganchos. Al hacer clic o tocar, lanzaras un
-    gancho para moverte.
+  m_text: "Your character moves using grappling hooks. When you click or tap, you\u2019ll
+    launch a hook to move."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 92212b4eb9e82014abd74dc5e6162996, type: 2}
   m_sharedMaterial: {fileID: 5641533175822497063, guid: 92212b4eb9e82014abd74dc5e6162996,
@@ -1188,6 +1188,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7643661855019019710, guid: 19799e4d9ae999742bf15d8ee4a58711,
+        type: 3}
+      propertyPath: m_text
+      value: Main menu
+      objectReference: {fileID: 0}
     - target: {fileID: 7969169630215915392, guid: 19799e4d9ae999742bf15d8ee4a58711,
         type: 3}
       propertyPath: mainMenuCanvas
@@ -1568,8 +1573,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Agarra la corona al final del nivel para completarlo. \n\xA1Evita obst\xE1culos
-    y usa los power-ups sabiamente!"
+  m_text: 'Grab the crown at the end of the level to complete it.
+
+    Avoid obstacles
+    and use the power-ups wisely!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 92212b4eb9e82014abd74dc5e6162996, type: 2}
   m_sharedMaterial: {fileID: 5641533175822497063, guid: 92212b4eb9e82014abd74dc5e6162996,
@@ -2371,7 +2378,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Evita los pinchos y las sierras. Si los tocas, \xA1mueres!"
+  m_text: Avoid spikes and saws. If you touch them, you die!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 92212b4eb9e82014abd74dc5e6162996, type: 2}
   m_sharedMaterial: {fileID: 5641533175822497063, guid: 92212b4eb9e82014abd74dc5e6162996,
@@ -2634,8 +2641,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Cada vez que mueres, se suma una muerte en el HUD. Aprende de tus errores
-    y mejora.
+  m_text: Each time you die, a death is added to the HUD. Learn from your mistakes
+    and keep improving.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 92212b4eb9e82014abd74dc5e6162996, type: 2}
   m_sharedMaterial: {fileID: 5641533175822497063, guid: 92212b4eb9e82014abd74dc5e6162996,
@@ -3648,9 +3655,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Cuando coges este power-up, los siguientes 5 ganchos ser\xE1n de m\xE1s
-    alcance autom\xE1ticamente. No puedes elegir cu\xE1ndo usarlos. Se gastan solos,
-    y luego vuelves al gancho normal."
+  m_text: "When you pick up this power-up, the next 5 grappling hooks will automatically
+    have extended reach. You can't choose when to use them \u2014 they're used up
+    automatically, and then you go back to the normal hook."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 92212b4eb9e82014abd74dc5e6162996, type: 2}
   m_sharedMaterial: {fileID: 5641533175822497063, guid: 92212b4eb9e82014abd74dc5e6162996,
@@ -3785,8 +3792,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Cuando coges este power-up, se te activara un escudo que se activara en
-    el momento que choques con un obstaculo y te dara 1 segundo para escapar.
+  m_text: When you pick up this power-up, a shield will activate the moment you hit
+    an obstacle, giving you 1 second to escape.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 92212b4eb9e82014abd74dc5e6162996, type: 2}
   m_sharedMaterial: {fileID: 5641533175822497063, guid: 92212b4eb9e82014abd74dc5e6162996,
@@ -4797,7 +4804,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Si tienes escudo, puedes chocar una vez contra un obst\xE1culo sin morir. "
+  m_text: If you have a shield, you can hit an obstacle once without dying. When
+    it activates, you'll have 1 second of invincibility to escape.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 92212b4eb9e82014abd74dc5e6162996, type: 2}
   m_sharedMaterial: {fileID: 5641533175822497063, guid: 92212b4eb9e82014abd74dc5e6162996,
@@ -5743,8 +5751,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "En la parte superior puedes ver cu\xE1ntas muertes llevas, si tienes escudo
-    activo y cu\xE1ntos ganchos de largo alcance te quedan."
+  m_text: At the top, you can see how many deaths you have, whether your shield is
+    active, and how many extended-reach hooks you have left.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 92212b4eb9e82014abd74dc5e6162996, type: 2}
   m_sharedMaterial: {fileID: 5641533175822497063, guid: 92212b4eb9e82014abd74dc5e6162996,
